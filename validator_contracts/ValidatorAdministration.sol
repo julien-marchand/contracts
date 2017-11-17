@@ -101,8 +101,8 @@ contract ValidatorBasedAdministration is Administration {
         s = bytes32(0);
 
         for (uint i = 0; i < 32; i++) {
-            r = r | (bytes32(sig[i]) << (32 - i));
-            s = s | (bytes32(sig[i + 32]) << (32 - i));
+            r = r | (bytes32(sig[i]) >> i * 8);
+            s = s | (bytes32(sig[i + 32]) >> i * 8);
         }
 
         v = uint8(sig[64]);
