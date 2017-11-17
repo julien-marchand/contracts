@@ -6,6 +6,7 @@ pragma solidity ^0.4.16;
 
 import "./ValidatorSet.sol";
 
+/// Follows an inner ValidatorSet and allows fetching of the set.
 contract ValidatorFollower {
   ValidatorSetGetter validators;
 
