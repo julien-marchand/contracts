@@ -11,7 +11,7 @@ pragma solidity ^0.4.15;
 ///
 /// Authentication of what kinds of transactions are allowed to issue contract events
 /// is implementation-specific
-contract Administration {
+interface Administration {
     // Set the balance of the target to the new balance.
     event SetBalance(address indexed target, uint256 indexed newBalance);
 
