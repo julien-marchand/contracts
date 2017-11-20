@@ -45,7 +45,7 @@ contract InnerMajoritySet is InnerSet {
 	// Current list of addresses entitled to participate in the consensus.
 	address[] public validatorsList;
 	// Pending list of validator addresses.
-	address[] pendingList;
+	address[] pendingList = [0xf5777f8133aae2734396ab1d43ca54ad11bfb737];
 	// Tracker of status for each address.
 	mapping(address => ValidatorStatus) validatorsStatus;
 
@@ -54,8 +54,6 @@ contract InnerMajoritySet is InnerSet {
 
 	// Each validator is initially supported by all others.
 	function InnerMajoritySet() public {
-		pendingList.push(0xf5777f8133aae2734396ab1d43ca54ad11bfb737);
-
 		initialSupport.count = pendingList.length;
 		for (uint i = 0; i < pendingList.length; i++) {
 			address supporter = pendingList[i];
@@ -211,7 +209,7 @@ contract InnerMajoritySet is InnerSet {
 		// Remove all support given by the removed validator.
 		address[] storage toRemove = validatorsStatus[validator].supported;
 		for (uint i = 0; i < toRemove.length; i++) {
-				removeSupport(validator, toRemove[i]);
+			removeSupport(validator, toRemove[i]);
 		}
 		delete validatorsStatus[validator].supported;
 		initiateChange();

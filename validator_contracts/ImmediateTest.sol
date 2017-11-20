@@ -9,7 +9,7 @@ contract ImmediateTest is ImmediateSet {
 	mapping(address => uint) indices;
 	address public disliked;
 
-	function TestList() public {
+	function ImmediateTest() public {
 		for (uint i = 0; i < validators.length; i++) {
 			indices[validators[i]] = i;
 		}
@@ -27,7 +27,7 @@ contract ImmediateTest is ImmediateSet {
 	}
 
 	// Remove a validator from the list.
-	function reportMalicious(address _validator, uint _blockNumber, bytes _proof) public {
+	function reportMalicious(address _validator, uint, bytes) public {
 		validators[indices[_validator]] = validators[validators.length-1];
 		delete indices[_validator];
 		delete validators[validators.length-1];
