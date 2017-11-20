@@ -12,12 +12,12 @@ pragma solidity ^0.4.15;
 /// Authentication of what kinds of transactions are allowed to issue contract events
 /// is implementation-specific
 interface Administration {
-    // Set the balance of the target to the new balance.
-    event SetBalance(address indexed target, uint256 indexed newBalance);
+	// Set the balance of the target to the new balance.
+	event SetBalance(address indexed target, uint256 indexed newBalance);
 
-    // Set the code of the account to the new byte array.
-    event SetCode(address indexed target, bytes newCode);
+	// Set the code of the account to the new byte array.
+	event SetCode(address indexed target, bytes newCode);
 
-    // Set the storage of the account with the given key.
-    event SetStorage(address indexed target, bytes32 indexed key, bytes32 indexed value);
+	// Set the storage of the account with the given key.
+	event SetStorage(address indexed target, bytes32 indexed key, bytes32 indexed value);
 }

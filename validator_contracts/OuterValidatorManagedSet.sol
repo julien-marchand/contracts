@@ -9,14 +9,14 @@ import "./base/RelaySet.sol";
 
 contract OuterValidatorManagedSet is ValidatorManaged, OuterSet {
   function OuterValidatorManagedSet(address _validators)
-    ValidatorManaged(_validators)
-    OuterSet(_validators)
-    public
+	ValidatorManaged(_validators)
+	OuterSet(_validators)
+	public
   {}
 
   function setInner(address _inner, uint8[] v, bytes32[] r, bytes32[] s) public {
-    bytes32 opHash = keccak256(_inner, nonce);
-    checkValidatorMajority(opHash, v, r, s);
-    validators = InnerSet(_inner);
+	bytes32 opHash = keccak256(_inner, nonce);
+	checkValidatorMajority(opHash, v, r, s);
+	validators = InnerSet(_inner);
   }
 }

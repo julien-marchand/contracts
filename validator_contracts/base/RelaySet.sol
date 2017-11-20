@@ -16,13 +16,13 @@ contract OuterSet is ValidatorSet, ValidatorFollower {
   bytes4 SIGNATURE = 0xb7ab4db5;
 
   modifier only_system_and_not_finalized() {
-    require(msg.sender == SYSTEM_ADDRESS && !finalized);
-    _;
+	require(msg.sender == SYSTEM_ADDRESS && !finalized);
+	_;
   }
 
   modifier only_inner() {
-    require(msg.sender == address(validators));
-    _;
+	require(msg.sender == address(validators));
+	_;
   }
 
   InnerSet public validators;
@@ -33,26 +33,26 @@ contract OuterSet is ValidatorSet, ValidatorFollower {
 
   // For validators.
   function initiateChange(bytes32 _parent_hash, address[] _new_set) public only_inner {
-    finalized = false;
-    InitiateChange(_parent_hash, _new_set);
+	finalized = false;
+	InitiateChange(_parent_hash, _new_set);
   }
 
   // For sealer.
   function finalizeChange() public only_system_and_not_finalized {
-    finalized = true;
-    validators.finalizeChange();
+	finalized = true;
+	validators.finalizeChange();
   }
 
   function getValidators() public constant returns (address[]) {
-    return getValidatorsInternal();
+	return getValidatorsInternal();
   }
 
   function reportBenign(address validator, uint256 blockNumber) public {
-    validators.reportBenign(validator, blockNumber);
+	validators.reportBenign(validator, blockNumber);
   }
 
   function reportMalicious(address validator, uint256 blockNumber, bytes proof) public {
-    validators.reportMalicious(validator, blockNumber, proof);
+	validators.reportMalicious(validator, blockNumber, proof);
   }
 }
 
@@ -60,8 +60,8 @@ contract InnerSet is ValidatorSetGetter {
   OuterSet public outerSet;
 
   modifier only_outer() {
-    require(msg.sender == address(outerSet));
-    _;
+	require(msg.sender == address(outerSet));
+	_;
   }
 
   function finalizeChange() public;

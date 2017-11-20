@@ -11,6 +11,6 @@ contract OuterOwnedSet is Owned, OuterSet {
   function OuterOwnedSet(address _validators) OuterSet(_validators) public {}
 
   function setInner(InnerSet _inner) public only_owner {
-    validators = _inner;
+	validators = _inner;
   }
 }
