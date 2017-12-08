@@ -29,7 +29,7 @@ contract OwnedSet is Owned, ValidatorSet {
 	uint public recentBlocks = 20;
 
 	modifier only_system_and_not_finalized() {
-		require(msg.sender != SYSTEM_ADDRESS || finalized);
+		require(msg.sender == SYSTEM_ADDRESS || finalized);
 		_;
 	}
 
