@@ -71,7 +71,7 @@ contract OwnedSet is Owned, ValidatorSet {
 
 	function OwnedSet(address[] _initial) public {
 		pending = _initial;
-		for (uint i = 0; i < _initial.length - 1; i++) {
+		for (uint i = 0; i < _initial.length; i++) {
 			pendingStatus[_initial[i]].isIn = true;
 			pendingStatus[_initial[i]].index = i;
 		}
