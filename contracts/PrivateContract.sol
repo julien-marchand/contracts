@@ -5,7 +5,7 @@
 //! and allows its change only if all the Validators (from a static list, initialized in constructor)
 //! have signed a new state (hashed together with a current nonce, for replay protection).
 
-pragma solidity 0.4.18;
+pragma solidity 0.4.19;
 
 
 contract PrivateContract {
@@ -19,6 +19,10 @@ contract PrivateContract {
         code = initialCode;
         state = initialState;
         nonce = 1;
+    }
+    
+    function getValidators() public constant returns (address[]) {
+        return validators;
     }
 
     function setState(bytes newState, uint8[] v, bytes32[] r, bytes32[] s) public {
