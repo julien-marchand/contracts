@@ -5,8 +5,7 @@
 //! and allows its change only if all the Validators (from a static list, initialized in constructor)
 //! have signed a new state (hashed together with a current nonce, for replay protection).
 
-pragma solidity 0.4.19;
-
+pragma solidity ^0.4.18;
 
 contract PrivateContract {
     address[] public validators;
