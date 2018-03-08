@@ -23,6 +23,21 @@ contract('Private', function(accounts) {
     private: '0x323f25528bca4eac32e75590ec62a6674240468de6ae7633f580d727642d00a6',
     address: '0xc274fcaf830aa911f1b5a32c8af21c6ee7c3d264'
   };
+  
+    describe("getValidators", () => {
+    let privateContract;
+
+    const InitialState = "Asdfg";
+
+    beforeEach(() => PrivateContract.new([validator1.address, validator2.address, validator3.address], '', web3.fromAscii(InitialState))
+      .then(_contract => privateContract = _contract)
+    );
+
+    it("should return the list of validators", () => Promise
+      .try(() => privateContract.getValidators())
+      .then(validators => assert.equal(JSON.stringify(validators), JSON.stringify([validator1.address, validator2.address, validator3.address]), "The list of validators doesnt coincide with initial, expected: " + [validator1.address, validator2.address, validator3.address] + ", returned: " + validators))
+    );
+  });
 
   describe("setState", () => {
     let privateContract;

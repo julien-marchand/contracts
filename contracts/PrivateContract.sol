@@ -7,6 +7,7 @@
 
 pragma solidity ^0.4.18;
 
+
 contract PrivateContract {
     address[] public validators;
     bytes public state;
