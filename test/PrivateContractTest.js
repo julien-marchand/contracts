@@ -24,7 +24,7 @@ contract('Private', function(accounts) {
     address: '0xc274fcaf830aa911f1b5a32c8af21c6ee7c3d264'
   };
   
-    describe("getValidators", () => {
+  describe("getValidators", () => {
     let privateContract;
 
     const InitialState = "Asdfg";
